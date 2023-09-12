@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
-import 'package:learn_flutter/func/Article.dart';
+import 'package:learn_flutter/model/Article.dart';
 import 'package:html/parser.dart' as htmlparser;
-import 'package:learn_flutter/func/function.dart';
+import 'package:learn_flutter/function/function.dart';
 import 'package:learn_flutter/news_app/view_article.dart';
 
 class ArticleWidget extends StatelessWidget{

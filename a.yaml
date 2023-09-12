@@ -1,0 +1,24 @@
+Người dùng mở app hoặc vào form đăng nhập
+  hệ thống check trong local có lưu accessToken không
+    Nếu không: (1)đăng nhập{
+      Response trả về thông tin nếu đăng nhập đúng
+        Lưu accessToken (cache, localStorage.. tùy)
+        Nếu người dùng tích vào nút "Remenber me / ghi nhớ đăng nhập" => lưu RefreshToken
+        Nếu người dùng không tích => xóa RefreshToken đã lưu trước đó (nếu có) còn không có thì không cần làm gì
+    }
+    Nếu có: Thực hiện một request{
+        Response trả về unAuthorizedRequest == true{ //accessToken đã lưu hết hạn
+          Kiểm tra có lưu refreshToken không{
+            Nếu không: bắt đăng nhập (quay về bước 1)
+            Nếu có: Gửi request lên /api/TokenAuth/RefreshToken để cấp mới accessToken{
+              Response trả về unAuthorizedRequest == false{ //RefreshToken còn hiệu lực và đúng
+                Lưu accessToken mới
+                => đăng nhập
+              }else response trả về statusCode500{ //resfreshToken loi => không có hiệu lực
+                => bắt đăng nhập (quay về bước 1)
+              }
+            }
+          }
+        }
+      }
+

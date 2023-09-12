@@ -111,7 +111,7 @@ Future<ArticleDto> GetArticleContent(int articleId) async{
   final response = await http.post(
     Uri.parse("https://techber.vn/appservices/getnewscontent.html"),
     headers: <String, String>{
-      'Content-Type': 'application/json; charset=UTF-8',
+      'Content-Type': 'application/json;charset=UTF-8',
     },
     body: jsonEncode(<String, int>{
       "id":articleId
